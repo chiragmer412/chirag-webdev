@@ -70,6 +70,10 @@ html{
     animation: TopSlide 1s ease forwards;
     animation-delay: calc(.2s * var(--vlr));
 }
+.hidden {
+    display: none;
+}
+
 @keyframes  TopSlide{
     0%{
         transform: translateY(-100px);
