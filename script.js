@@ -48,3 +48,15 @@ document.getElementById('contactForm').onsubmit = function (event) {
     // Open WhatsApp chat directly without showing "continue to chat" message
     window.open(whatsappUrl, '_blank');
 }
+
+function toggleReadMore(btn) {
+    const moreText = btn.previousElementSibling; // .more-text
+    moreText.classList.toggle('hidden');
+
+    // Toggle button text
+    if (moreText.classList.contains('hidden')) {
+        btn.textContent = "Read More";
+    } else {
+        btn.textContent = "Read Less";
+    }
+}
