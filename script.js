@@ -50,13 +50,22 @@ document.getElementById('contactForm').onsubmit = function (event) {
 }
 
 function toggleReadMore(btn) {
-    const moreText = btn.previousElementSibling; // .more-text
-    moreText.classList.toggle('hidden');
+    const moreText = btn.previousElementSibling;
 
-    // Toggle button text
     if (moreText.classList.contains('hidden')) {
-        btn.textContent = "Read More";
-    } else {
+        // Show content with slide from right
+        moreText.classList.remove('hidden', 'hide-to-left');
+        moreText.classList.add('show-from-right');
         btn.textContent = "Read Less";
+    } else {
+        // Animate out to left, then hide
+        moreText.classList.remove('show-from-right');
+        moreText.classList.add('hide-to-left');
+        setTimeout(() => {
+            moreText.classList.remove('hide-to-left');
+            moreText.classList.add('hidden');
+        }, 800); // match this to the animation duration
+        
+        btn.textContent = "Read More";
     }
 }
