@@ -48,26 +48,34 @@ document.getElementById('contactForm').onsubmit = function (event) {
     // Open WhatsApp chat directly without showing "continue to chat" message
     window.open(whatsappUrl, '_blank');
 }
-
 function toggleReadMore(btn) {
     const moreText = btn.previousElementSibling;
 
     if (moreText.classList.contains('hidden')) {
-        // Show element and animate in
+        // RESET & PLAY SLIDE-IN
         moreText.classList.remove('hidden', 'slide-out');
-        void moreText.offsetWidth; // Reflow to reset animation
+        void moreText.offsetWidth; // Reflow
         moreText.classList.add('slide-in');
         btn.textContent = "Read Less";
     } else {
-        // Animate out to the left
+        // PLAY SLIDE-OUT
         moreText.classList.remove('slide-in');
         moreText.classList.add('slide-out');
 
-        // After animation, hide it
-        moreText.addEventListener('animationend', function handler() {
+        // ADD .hidden AFTER animation ends (mobile-compatible)
+        const handleAnimationEnd = () => {
             moreText.classList.add('hidden');
-            moreText.removeEventListener('animationend', handler);
-        });
+            moreText.removeEventListener('animationend', handleAnimationEnd);
+        };
+
+        // Fallback for mobile browsers in case event doesn't fire
+        setTimeout(() => {
+            if (!moreText.classList.contains('hidden')) {
+                moreText.classList.add('hidden');
+            }
+        }, 600); // slightly more than animation time (0.5s)
+
+        moreText.addEventListener('animationend', handleAnimationEnd);
 
         btn.textContent = "Read More";
     }
