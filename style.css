@@ -33,6 +33,7 @@ html{
     background: #0f0a0a;
 }
 .logo{
+    margin-left: 59px;
     font-size: 2.9rem;
     font-weight: 600;
     text-decoration: none;
