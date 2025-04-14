@@ -53,19 +53,22 @@ function toggleReadMore(btn) {
     const moreText = btn.previousElementSibling;
 
     if (moreText.classList.contains('hidden')) {
-        // Show content with slide from right
-        moreText.classList.remove('hidden', 'hide-to-left');
-        moreText.classList.add('show-from-right');
+        // Show element and animate in
+        moreText.classList.remove('hidden', 'slide-out');
+        void moreText.offsetWidth; // Reflow to reset animation
+        moreText.classList.add('slide-in');
         btn.textContent = "Read Less";
     } else {
-        // Animate out to left, then hide
-        moreText.classList.remove('show-from-right');
-        moreText.classList.add('hide-to-left');
-        setTimeout(() => {
-            moreText.classList.remove('hide-to-left');
+        // Animate out to the left
+        moreText.classList.remove('slide-in');
+        moreText.classList.add('slide-out');
+
+        // After animation, hide it
+        moreText.addEventListener('animationend', function handler() {
             moreText.classList.add('hidden');
-        }, 800); // match this to the animation duration
-        
+            moreText.removeEventListener('animationend', handler);
+        });
+
         btn.textContent = "Read More";
     }
 }
