@@ -70,8 +70,46 @@ html{
     animation: TopSlide 1s ease forwards;
     animation-delay: calc(.2s * var(--vlr));
 }
+
 .hidden {
     display: none;
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+/* When showing */
+.show-from-right {
+    display: block;
+    animation: slideInRight 0.8s forwards;
+}
+
+/* When hiding */
+.hide-to-left {
+    animation: slideOutLeft 0.8s forwards;
+}
+
+/* Slide-in from right with fade */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide-out to left with fade */
+@keyframes slideOutLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
 }
 
 @keyframes  TopSlide{
