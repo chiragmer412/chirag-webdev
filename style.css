@@ -38,18 +38,46 @@ html{
     text-decoration: none;
     color: #fff;
     transform: translateX(-100%);
-    opacity: 0;
+    /* opacity: 0; */
     animation: RightSlide 1s ease forwards;
 }
-@keyframes  RightSlide{
-    0%{
-        transform: translateX(-100%);
+
+/* Initially hide the element */
+.hidden {
+    display: none;
+}
+
+/* Slide in from right */
+@keyframes SlideInRight {
+    0% {
+        transform: translateX(100%);
         opacity: 0;
     }
-    100%{
+    100% {
         transform: translateX(0%);
         opacity: 1;
     }
+}
+
+/* Slide out to left */
+@keyframes SlideOutLeft {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* Utility classes */
+.slide-in {
+    animation: SlideInRight 0.5s ease forwards;
+}
+
+.slide-out {
+    animation: SlideOutLeft 0.5s ease forwards;
 }
 
 #menu{
@@ -70,48 +98,6 @@ html{
     animation: TopSlide 1s ease forwards;
     animation-delay: calc(.2s * var(--vlr));
 }
-
-.hidden {
-    display: none;
-    opacity: 0;
-    transition: all 0.8s ease;
-}
-
-/* When showing */
-.show-from-right {
-    display: block;
-    animation: slideInRight 0.8s forwards;
-}
-
-/* When hiding */
-.hide-to-left {
-    animation: slideOutLeft 0.8s forwards;
-}
-
-/* Slide-in from right with fade */
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Slide-out to left with fade */
-@keyframes slideOutLeft {
-    from {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-}
-
 @keyframes  TopSlide{
     0%{
         transform: translateY(-100px);
@@ -743,6 +729,7 @@ footer i{
     border-radius: 50%;
     font-size: 2.4rem;
 }
+
 /* RESPONSIVE */
 @media(max-width:1200px){
     html{
@@ -808,7 +795,27 @@ footer i{
         width: 20rem;
         height: 20rem;
     }
+    .more-text.hidden {
+        display: none;
+    }
+
+    .more-text {
+        display: block;
+    }
+
+    .read-more-btn {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        background: #2e2e2e;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }
+
 @media(max-width:450px){
     html{
         font-size: 50%;
