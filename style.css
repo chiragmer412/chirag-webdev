@@ -38,46 +38,23 @@ html{
     text-decoration: none;
     color: #fff;
     transform: translateX(-100%);
-    /* opacity: 0; */
+    opacity: 0;
     animation: RightSlide 1s ease forwards;
 }
 
-/* Initially hide the element */
 .hidden {
     display: none;
 }
 
-/* Slide in from right */
-@keyframes SlideInRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-
-/* Slide out to left */
-@keyframes SlideOutLeft {
-    0% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-    100% {
+@keyframes  RightSlide{
+    0%{
         transform: translateX(-100%);
         opacity: 0;
     }
-}
-
-/* Utility classes */
-.slide-in {
-    animation: SlideInRight 0.5s ease forwards;
-}
-
-.slide-out {
-    animation: SlideOutLeft 0.5s ease forwards;
+    100%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
 }
 
 #menu{
