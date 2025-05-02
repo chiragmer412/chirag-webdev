@@ -280,6 +280,51 @@ section{
     opacity: 1;
     }
 }
+
+/* Existing Animations (unchanged) */
+@keyframes Left {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+/* 🔁 New Animation for Slide-Out to Left */
+@keyframes slideOutLeft {
+    0% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+}
+
+/* Class to apply the slide-out-left animation */
+.slide-out {
+    animation: slideOutLeft 0.5s ease forwards;
+}
+
+/* Class for slide-in (already triggered in JS, you can keep this or tweak as needed) */
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.slide-in {
+    animation: slideInLeft 0.5s ease forwards;
+}
+
 .social-media i::after{
     content: "";
     position: absolute;
