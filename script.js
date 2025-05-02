@@ -58,25 +58,24 @@ function toggleReadMore(btn) {
         moreText.classList.add('slide-in');
         btn.textContent = "Read Less";
     } else {
-        // PLAY SLIDE-OUT
+        // PLAY SLIDE-OUT TO LEFT
         moreText.classList.remove('slide-in');
         moreText.classList.add('slide-out');
 
-        // ADD .hidden AFTER animation ends (mobile-compatible)
+        // ADD .hidden AFTER animation ends
         const handleAnimationEnd = () => {
             moreText.classList.add('hidden');
             moreText.removeEventListener('animationend', handleAnimationEnd);
         };
 
-        // Fallback for mobile browsers in case event doesn't fire
+        // Fallback timeout
         setTimeout(() => {
             if (!moreText.classList.contains('hidden')) {
                 moreText.classList.add('hidden');
             }
-        }, 600); // slightly more than animation time (0.5s)
+        }, 600);
 
         moreText.addEventListener('animationend', handleAnimationEnd);
-
         btn.textContent = "Read More";
     }
 }
