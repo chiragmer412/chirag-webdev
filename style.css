@@ -17,6 +17,8 @@ html{
     font-size: 62.5%;
     overflow-x: hidden;
 }
+a{
+text-decoration:none;
 .header{
     position: fixed;
     left: 0;
